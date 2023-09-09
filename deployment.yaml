@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-admin-deployment
+  labels:
+    app: webapp-admin
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webapp-admin
+  template:
+    metadata:
+      labels:
+        app: webapp-admin
+    spec:
+      containers:
+        - name: webapp-django
+          image: roka0215/webapp:2
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: webapp-admin-secret
+            - configMapRef:
+                name: webapp-admin-configmap
+          ports:
+            - containerPort: 5005
+          volumeMounts:
+            - mountPath: /.static_root
+              name: webapp-admin-volume
+          command:
+            - "/bin/bash"
+            - "-c"
+            - "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py collectstatic --no-input && gunicorn --bind 0.0.0.0:5005 config.wsgi"
+      imagePullSecrets:
+        - name: dockerhub-secrets
+   nodeSelector: {}
+      volumes:
+        - name: webapp-admin-volume
+          hostPath:
+            type: DirectoryOrCreate
+            path: /home/vagrant/static-admin
