@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-admin-nodeport
+spec:
+  selector:
+    app: webapp-admin
+  ports:
+    - port: 5085
+  type: NodePort
