@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: webapp-django
-          image: roka0215/django-web:11
+          image: roka0215/django-web:12
           imagePullPolicy: IfNotPresent
           envFrom:
             - secretRef:
