@@ -33,7 +33,7 @@ spec:
           command:
             - "/bin/bash"
             - "-c"
-            - "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py collectstatic --no-input && gunicorn --bind 0.0.0.0:5005 config.wsgi"
+            - "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py collectstatic && gunicorn --bind 0.0.0.0:8005 config.wsgi"
         - name: webapp-admin-nginx
           image: nginx
           imagePullPolicy: IfNotPresent
