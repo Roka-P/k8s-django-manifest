@@ -28,12 +28,12 @@ spec:
           ports:
             - containerPort: 8005
           volumeMounts:
-            - mountPath: /code/.static_root
+            - mountPath: .static_root
               name: webapp-admin-volume
           command:
             - "/bin/bash"
             - "-c"
-            - "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py collectstatic && gunicorn --bind 0.0.0.0:8005 core.wsgi"
+            - "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py collectstatic && /usr/local/bin/gunicorn --bind 0.0.0.0:8005 core.wsgi"
         - name: webapp-admin-nginx
           image: nginx
           imagePullPolicy: IfNotPresent
