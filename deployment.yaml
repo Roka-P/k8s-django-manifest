@@ -28,7 +28,7 @@ spec:
           ports:
             - containerPort: 8005
           volumeMounts:
-            - mountPath: /.static_root
+            - mountPath: /code/.static_root
               name: webapp-admin-volume
           command:
             - "/bin/bash"
