@@ -47,13 +47,10 @@ spec:
       volumes:
         - name: webapp-admin-volume
           hostPath:
-            type: DirectoryOrCreate
             path: /home/vagrant/static-admin
         - name: webapp-admin-static
           hostPath:
-            type: DirectoryOrCreate
             path: /home/vagrant/static-admin
         - name: webapp-admin-config
           hostPath:
-            type: DirectoryOrCreate
             path: /home/vagrant/nginx/admin-config
