@@ -23,8 +23,7 @@ spec:
           envFrom:
             - secretRef:
                 name: webapp-admin-secret
-            - configMapRef:
-                name: webapp-admin-configmap
+            - configMapRef: {}
           ports:
             - containerPort: 8005
           volumeMounts:
