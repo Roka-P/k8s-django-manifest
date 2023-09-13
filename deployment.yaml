@@ -18,7 +18,7 @@ spec:
         - name: dockerhub-secrets
       containers:
         - name: webapp-django
-          image: roka0215/django-web:59
+          image: roka0215/django-web:60
           imagePullPolicy: IfNotPresent
           envFrom:
             - secretRef:
