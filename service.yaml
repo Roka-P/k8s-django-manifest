@@ -7,4 +7,4 @@ spec:
     app: webapp-admin
   ports:
     - port: 5085
-  type: LoadBalancer
+  type: NodePort
